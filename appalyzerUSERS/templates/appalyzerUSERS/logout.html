@@ -1,0 +1,18 @@
+<!--
+  Página mostrada cuando un usuario termina sesión
+-->
+{% extends "appalyzer/base.html" %}<!--Renderizamos plantilla base-->
+<!--Inicio sección content-->
+{% block content %}
+<section id="logout" class="services">
+  <div class="container">
+    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+      <h2>Has terminado sesión</h2>  
+      <div class="text-center">
+        <small class="text-muted"><a class="ml-2" href="{% url 'login' %}">Inicia sesión nuevamente</a></small>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+<!--Fin sección content-->

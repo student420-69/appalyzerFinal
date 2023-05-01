@@ -1,0 +1,28 @@
+<!--Página utilizada no solo para mostrar la información del perfil
+si no que tambien es posible que el usuario actualice sus datos-->
+{% extends "appalyzer/base.html" %}<!--Renderizamos plantilla base-->
+{% load crispy_forms_tags %}<!--Libreria para cuestionarios-->
+<!--Inicio sección contenido-->
+{% block content %}
+<section id="logout" class="services">
+  <div class="container w-50">
+    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+      <img src="{{ user.profile.image.url }}" alt="">
+      <div>
+        <h2>{{ user.username }}</h2>
+        <p>{{ user.email }}</p>
+      </div>
+      <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset>
+          <legend>Información del Perfil</legend>
+          {{ u_form|crispy }}<!--Campos para llenar formulario-->
+          {{ p_form|crispy }}
+        </fieldset>
+        <button type="submit" class="btn-98">Actualizar datos</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+<!--Fin sección contenido-->

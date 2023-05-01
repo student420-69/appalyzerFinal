@@ -1,0 +1,45 @@
+<!--Página utilizada para mostrar todas las consultas realizadas por los usuarios,
+para que de esta manera puedan ser revisadas por otros usuarios-->
+{% extends "appalyzer/base.html" %}<!--Extraemos plantilla base-->
+<!--Inicion sección hero-->
+{% block hero %}
+<!--Inicio ciclo para mostrar todas las predicciones realizadas-->
+{% for post in posts %}
+    <section id="posts" class="posts">
+        <div class="container card w-50 border-primary">
+          <div class="card-header">
+            <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+              <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" alt="">
+              <h2><a href="{% url 'AppAlyzer-PostDetails' post.id %}">{{ post.ID_App }}</a></h2>
+            </div>
+          </div>
+          <div class="card-body">
+            <p>Total de comentarios</p>
+            <p>{{ post.Cantidad_Comentarios }}</p>
+            <div class="row">
+              <div class="col">
+                <p>Comentarios Positivos</p>
+                <p>{{ post.positive_comments }}</p>
+              </div>
+              <div class="col">
+                <p>Comentarios Neutros</p>
+                <p>{{ post.neutral_comments }}</p>
+              </div>
+              <div class="col">
+                <p>Comentarios Negativos</p>
+                <p>{{ post.negative_comments }}</p>
+              </div>
+                <p>Emoción</p>
+                <p>{{ post.emotion_comments }}</p>
+            </div>
+          </div>
+          <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+            <a href="{% url 'AppAlyzer-UserPosts' post.author.username %}" class="mr-2">{{ post.author }}</a>
+            <small class="text-muted">{{ post.date_consulted|date:"F d, Y" }}</small>
+          </div>
+        </div>
+    </section>    
+    {% endfor %}
+    <!--Fin ciclo-->
+{% endblock hero %}
+<!--Fin sección hero-->

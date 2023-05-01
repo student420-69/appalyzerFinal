@@ -1,0 +1,74 @@
+<!---->
+<!--Página para que el usuario sea capaz de contactar al equipo de desarrollo 
+de AppAlyzer-->
+{% extends "appalyzer/base.html" %}<!--Extraemos plantilla base-->
+{% load crispy_forms_tags %} <!--Libreria de cuestionarios-->
+<!--Bloque contenido donde mostramos el cuestionario para ponerse en contacto
+con el equipo de desarrollo-->
+{% block content %}
+   <!-- ======= Sección de contacto ======= -->
+   <section id="contact" class="contact section-bg">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Gracias por contactarnos - {{ name }}</h2>
+        <p>Si deseas conocer más acerca de nosotros, así como de los productos y servicios ofrecidos. Contáctanos</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="info-box mb-4">
+            <i class="bx bx-map"></i>
+            <h3>Nuestra Dirección</h3>
+            <p>Av. Rafael Casillas Aceves #1200, CP 47620, Tepatitlán de Morelos Jalisco México</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="info-box  mb-4">
+            <i class="bx bx-envelope"></i>
+            <h3>Nuestro Correo</h3>
+            <p>alyzerapp@gmail.com</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="info-box  mb-4">
+            <i class="bx bx-phone-call"></i>
+            <h3>Nuestro Teléfono</h3>
+            <p>+52 348 105 9001</p>
+            <p>+52 378 111 2436</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 ">
+          <!--API de Google Maps para mostrar ubicación-->
+          <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3728.6102235934895!2d-102.78455708557652!3d20.847440399320462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842927a02f60d503%3A0xcd92d81319b1a41a!2sCentro%20Universitario%20de%20los%20Altos!5e0!3m2!1ses-419!2smx!4v1665865438994!5m2!1ses-419!2smx" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+        </div>
+        <div class="col-lg-6">
+            {% csrf_token %}
+          <form action="{% url 'AppAlyzer-Contact' %}" method="POST" class="php-email-form">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Tu nombre" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Tu correo" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Cargando</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Tu mensaje ha sido enviado. Gracias!</div>
+            </div>
+            <div class="text-center"><button type="submit">Enviar Mensaje</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section><!-- Fin de sección de contacto -->
+{% endblock content %}
+<!--Fin de bloque de contenido-->

@@ -1,0 +1,32 @@
+<!--
+  Página utilizada para corroborar que efectivamente el usuario desea eliminar
+  una consulta hecha por el anteriormente
+-->
+{% extends "appalyzer/base.html" %}<!--Extraemos plantilla base-->
+<!--Inicion sección content-->
+{% block content %}
+
+<section id="registers" class="registers">
+  <div class="container w-50">
+    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+      <form action="" method="POST">
+        {% csrf_token %}<!--Token único que mejora seguridad contra Cross Site Request Forgeries-->
+        <fieldset class="form-group">
+          <!--Mostramos información de consulta para que el usuario tome la decisión correcta-->
+          <h2>Eliminar consulta de {{ object.app_name }}</h2>
+          <legend>Consulta realizada por {{ object.author }}</legend>
+          <legend>Consulta realizada {{ object.date_consulted|date:"F d, Y" }}</legend>
+          <legend>¿Estas seguro de eliminar la consulta?</legend>
+        </fieldset>
+        <div class="form-group">
+          <button type="submit" class="btn-99">Si, eliminar consulta</button>
+        </div>
+        <div class="form-group">
+            <a class="btn-98" href="{% url 'AppAlyzer-PostDetails' object.id %}">No, regresar</a>
+          </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+<!--Fin sección content-->

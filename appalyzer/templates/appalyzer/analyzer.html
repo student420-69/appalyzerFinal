@@ -1,0 +1,42 @@
+<!--
+  Página donde se muestran los campos necesarios para realizar la predicción
+-->
+
+{% extends "appalyzer/base.html" %} <!-- Importar diseño implementado en base.html -->
+{% load crispy_forms_tags %} <!--Libreria para cuestionarios con diseño-->
+<!--Bloque para cambiar el diseño de la página que se muestra primero-->
+{% block hero %}
+<section id="hero">
+  <div class="hero-container" data-aos="fade-up">
+    <h1>AppAlyzer</h1>
+    <h2>El momento ha llegado.</h2>
+    <div class="video-container">
+      <video autoplay loop muted>
+        <source src="../../static/appalyzer/img/video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <a href="#" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+  </div>
+</section>
+<!-- Fin de bloque -->
+{% endblock hero %}
+<!--Bloque de contenido principal, donde se muestran los campos necesarios para realizar una predicción-->
+{% block content %}
+<section id="registers" class="registers">
+  <div class="container w-50">
+    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+      <form action="" method="POST">
+        {% csrf_token %} <!--Token único que mejora seguridad contra Cross Site Request Forgeries-->
+        <fieldset class="form-group">
+          <h2>Nueva Búsqueda</h2>
+          {{ form|crispy }} <!--Se muestran los campos necesarios-->
+        </fieldset>
+        <div class="form-group">
+          <button type="submit" id="predict" class="btn-98">Predecir aplicación</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<!--Cargador mostrado para mostrar resultado-->
+{% endblock content %}

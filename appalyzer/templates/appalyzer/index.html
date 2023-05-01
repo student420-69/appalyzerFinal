@@ -1,0 +1,160 @@
+<!--
+  Página principal donde es lo primero que es visto por el usuario.
+-->
+{% extends "appalyzer/base.html" %} <!--Extraemos plantilla base-->
+<!--Bloque 'hero' donde aparece AppAlyzer y es la página de bienvenida del usuario-->
+{% block hero %}
+  <!-- ======= Sección Hero ======= -->
+  <section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+      <h1>AppAlyzer</h1>
+      <h2>La página que te permite una verdadera introspección a tus aplicaciones favoritas.</h2>
+      <div class="video-container">
+        <video autoplay loop muted>
+          <source src="../../static/appalyzer/img/hero.mp4" type="video/mp4">
+        </video>
+      </div>
+      <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+    </div>
+  </section><!-- Fin sección Hero -->
+{% endblock hero %} 
+<!--Inicio sección content-->
+{% block content %}
+    <!-- ======= Sección Predictor sentimientos ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="content col-xl-5 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="content">
+              <h3>AppAlyzer: Predictor de Sentimientos</h3>
+              <p>
+                Analiza los sentimientos generados entre los usuarios de tus aplicaciones favoritas disponibles en la Google Play Store
+              </p>
+            </div>
+          </div>
+          <div class="col-xl-7 d-flex align-items-stretch">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                  <i class="bi bi-body-text"></i>
+                  <h4>Procesamiento de Lenguaje Natural</h4>
+                  <p>AppAlyzer hace uso del PLN para predecir sentimientos, asi como obtener la polaridad de los cuerpos de texto obtenidos.</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                  <i class="bi bi-google-play"></i>
+                  <h4>Google Play Store</h4>
+                  <p>AppAlyzer analiza tu aplicación si se encuentra disponible en la Google Play Store.</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bi bi-person-bounding-box"></i>
+                  <h4>Análisis de Sentimientos</h4>
+                  <p>AppAlyzer analiza los cuerpos de texto identificando patrones y palabras clave para obtener una conclusión certera.</p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                  <i class="bi bi-globe"></i>
+                  <h4>Web Scraping</h4>
+                  <p>AppAlyzer utiliza el Web Scraping para recopilar tus comentarios publicados en la Google Play Store.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- Fin sección predictor de sentimientos -->
+    <!-- ======= Sección Funciones ======= -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Funciones</h2>
+          <p>AppAlyzer es capaz de realizar las siguientes funciones con los comentarios obtenidos:</p>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up">
+              <div class="icon"><i class="bi bi-plus-slash-minus"></i></div>
+              <h4 class="title">Polaridad</h4>
+              <p class="description">Los comentarios se clasifican en tres posibles valores: positivo, negativo o neutro</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bi bi-emoji-sunglasses"></i></div>
+              <h4 class="title">Sentimientos</h4>
+              <p class="description">Es posible detectar el sentimiento predominante de cada comentario, como: miedo, alegría, tristeza, ...</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="bi bi-download"></i></div>
+              <h4 class="title">Descargar archivo</h4>
+              <p class="description">Se generará un archivo con extensión .xlsx, el cual podrás descargar</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+              <div class="icon"><i class="bi bi-box-arrow-in-right"></i></div>
+              <h4 class="title">Accede</h4>
+              <p class="description">Inicia sesión o regístrate para tener acceso a todas las funciones de AppAlyzer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- Fin sección funciones -->
+    <!-- ======= Sección analizar aplicación ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+        <div class="text-center">
+          <h3>Analiza tu Aplicación</h3>
+          <p> Ha llegado tu momento de utilizar AppAlyzer. ¡Es muy sencillo! </p>
+          <a class="cta-btn" href="{% url 'AppAlyzer-Analyzer' %}">Analizar aplicación</a>
+        </div>
+      </div>
+    </section><!-- Fin sección analizar aplicación -->
+    <!-- ======= Sección equipo de desarrollo ======= -->
+    <section id="team" class="team">
+      <div class="container">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+          <h2>Equipo de Desarrollo</h2>
+          <p>Somos un equipo joven, con valores y ambición que esta motivado por el bienestar social, así como la propia y sana integración entre el desarrollo social y tecnológico.</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="fade-up">
+              <div class="pic"><img src="../../static/appalyzer/img/team/team-2.jpeg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Diego Hernandez Gonzalez</h4>
+                <span>CEO</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="150">
+              <div class="pic"><img src="../../static/appalyzer/img/team/team-1.jpeg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Stephany Michelle Cortes Gonzalez</h4>
+                <span>CEO</span>
+                <div class="social">
+                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href=""><i class="bi bi-facebook"></i></a>
+                  <a href=""><i class="bi bi-instagram"></i></a>
+                  <a href=""><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="pic"><img src="../../static/appalyzer/img/full-logo.PNG" class="img-fluid" alt=""></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- Fin sección equipo de desarrollo -->
+    {% endblock content %}
+    <!--Fin sección content-->

@@ -1,0 +1,49 @@
+<!--
+  Página utilizada para mostrar predicciones individuales si es que el usuario desea eliminarla
+-->
+{% extends "appalyzer/base.html" %}<!--Extraemos plantilla base-->
+<!--Inicio sección hero-->
+{% block hero %}
+    <section id="posts" class="posts">
+        <div class="container card w-50 border-primary">
+          <div class="card-header">
+            <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+              <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" alt="">
+              <h2>{{ object.ID_App }}</h2> 
+            </div>
+          </div> 
+          <div class="card-body">
+            <p>Total de comentarios</p>
+            <p>{{ object.Cantidad_Comentarios }}</p>
+            <div class="row">
+              <div class="col">
+                <p>Comentarios Positivos</p>
+                <p>{{ object.positive_comments }}</p>
+              </div>
+              <div class="col">
+                <p>Comentarios Neutros</p>
+                <p>{{ object.neutral_comments }}</p>
+              </div>
+              <div class="col">
+                <p>Comentarios Negativos</p>
+                <p>{{ object.negative_comments }}</p>
+              </div>
+                <p>Emoción</p>
+                <p>{{ object.emotion_comments }}</p>
+            </div>
+          </div>
+          <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+            <a href="{% url 'AppAlyzer-UserPosts' object.author.username %}" class="mr-2">{{ object.author }}</a>
+            <small class="text-muted">{{ object.date_consulted|date:"F d, Y" }}</small>
+          </div>
+          <!--Condicional que permite solo al autor de la prediccion eliminar la consulta-->
+          {% if object.author == user %}
+          <div class="form-group">
+            <a class="btn-99" href="{% url 'AppAlyzer-PostDelete' object.id %}">Eliminar consulta</a>
+          </div>
+          {% endif %}
+          <!--Fin condicion-->
+        </div>
+    </section>    
+{% endblock hero %}
+<!--Fin sección hero-->

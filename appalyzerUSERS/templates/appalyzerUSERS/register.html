@@ -1,0 +1,26 @@
+<!--Página que muestra los campos para registrar un nuevo usuario-->
+{% extends "appalyzer/base.html" %}<!--Renderizamos plantilla base-->
+{% load crispy_forms_tags %}<!--Libreria para cuestionarios-->
+<!--Inicio sección contenido-->
+{% block content %}
+<section id="registers" class="registers">
+  <div class="container w-50">
+    <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+      <form action="" method="POST">
+        {% csrf_token %}<!--Token único que mejora seguridad contra Cross Site Request Forgeries-->
+        <fieldset class="form-group">
+          <h2>Únete Hoy</h2>
+          {{ form|crispy }}<!--Campos para llenar formulario-->
+        </fieldset>
+        <div class="form-group">
+          <button type="submit" class="btn-98">Registrarse</button>
+        </div>
+      </form>
+      <div class="text-center">
+        <small>¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia Sesión</a></small>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+<!--Fin sección contenido-->

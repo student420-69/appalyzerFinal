@@ -1,0 +1,160 @@
+<!--
+  Plantilla base la cual funciona como un diseño base para las demas paginas utilizadas
+  esto nos permite reutilizar código asi como asegurar el mismo diseño dentro de
+  todas las páginas.
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>AppAlyzer</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Librerias importadas de Favicons -->
+  <link href="{% static 'appalyzer/img/icon-logo.PNG' %}" rel="icon">
+  <link href="{% static 'appalyzer/img/icon-logo.PNG' %}" rel="apple-touch-icon">
+  <!-- Librerias importadas de Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Librerias importadas de Vendor CSS Files -->
+  <link href="{% static 'appalyzer/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'appalyzer/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'appalyzer/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'appalyzer/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'appalyzer/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'appalyzer/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <!-- Archivo CSS principal -->
+  <link href="{% static 'appalyzer/css/style.css' %}" rel="stylesheet" type="text/css">
+  <!-- =======================================================
+  * Template Name: Squadfree - v4.9.1
+  * Template URL: https://bootstrapmade.com/squadfree-free-bootstrap-template-creative/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+<body>
+  <!-- ======= Encabezado ======= -->
+  <header id="header" class="fixed-top header-transparent">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="logo">
+        <h1 class="text-light"><a href="{% url 'AppAlyzer-Home' %}"><span><img src="{% static 'appalyzer/img/icon-logo.PNG' %}" alt="">AppAlyzer</span></a></h1>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <!--
+          Inicio Condicional  
+          Condicional que si detecta que estamos en la página principal
+          el contenido de la barra de navegación mostrará todas las opciones-->
+          {% if request.path == '/' %}
+          <!-- <a class="nav-link scrollto active" href="{% url 'AppAlyzer-Home' %}">Inicio</a> -->
+          <li><a class="nav-link scrollto" href="#about">Acerca de AppAlyzer</a></li>
+          <li class="dropdown"><a href="#services"><span>Funciones</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'AppAlyzer-Posts' %}">Consultas</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'AppAlyzer-Analyzer' %}">Realizar Consulta</a></li>
+            </ul>
+          <li><a class="nav-link scrollto" href="#team">Equipo</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'AppAlyzer-Contact' %}">Contacto</a></li>
+          <li class="dropdown"><a href="#"><span>Cuenta Personal</span> <i class="bi bi-chevron-down"></i></a>
+          <!--En caso de no estar en la página principal la barra de navegación
+          mostrará diferentes opciones-->
+            {% else %}
+          <li><a class="nav-link scrollto" href="{% url 'AppAlyzer-Home' %}">Inicio</a></li>
+          {% endif %}<!--Fin de condicional-->
+            <ul>
+              <!--Inicio condicional
+              Si usuario ha iniciado sesión tendra estas opciones en barra de navegación-->
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'profile' %}">Perfil</a></li>
+              <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+              <!--Opciones en barra de navegación si usuario no ha iniciado sesión-->
+              {% else %}
+              <li><a href="{% url 'register' %}">Registrarse</a></li>
+              <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+              {% endif %}
+              <!--Fin de condicional-->
+            </ul>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- Fin de barra de navegación -->
+    </div>
+  </header><!-- Fin de encabezado -->
+  <!--Inicio contenido-->
+  <!--
+    Dentro de estos bloques, el primero denominado 'hero' y el segundo 'content'
+    cambiará su contenido dependiendo del archivo html utilizado y las funciones
+    que permita realizar la página en la que nos encontramos
+  -->
+  {% block hero %}{% endblock %}
+  <main id="main"><!--Inicio Main-->
+    <!--Condicional para mostrar notificaciones-->
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+    <!--Fin condicional-->
+    {% block content %}{% endblock %}
+ 
+  </main><!-- Fin main -->
+  <!-- ======= Inicio pie de página ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>AppAlyzer</h3>
+              <p class="pb-3"><em>Predictor de Sentimientos</em></p>
+              <p>
+                Av. Rafael Casillas Aceves #1200 <br>
+                Tepatitlán de Morelos, Jal. 47620, México<br><br>
+                <strong>Correo:</strong> alyzerapp@gmail.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Links Útiles</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Acerca de AppAlyzer</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Funciones</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Equipo</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Contacto</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>AppAlyzer</span></strong>. Derechos Reservados
+      </div>
+    </div>
+  </footer>
+  <!-- Fin pie de página -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Librerias importadas de Vendor JS Files -->
+  <script src="{% static 'appalyzer/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'appalyzer/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'appalyzer/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'appalyzer/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'appalyzer/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'appalyzer/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <!-- Librerias importadas de Template Main JS File -->
+  <script src="{% static 'appalyzer/js/main.js' %}"></script>
+  <!--Libreria para creacion de graficos-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!--JQuery-->  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</body>
+</html>
