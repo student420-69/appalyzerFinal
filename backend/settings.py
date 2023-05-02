@@ -12,8 +12,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Llave de seguridad que permite que el proyecto sea unico y seguro
 # Es recomendable mantener esta llave secreta
-SECRET_KEY = config("SECRET_KEY")
-DEBUG = config("DEBUG", cast=bool)
+SECRET_KEY = 'django-insecure-enbuuw5e2q!70@9-v@2ut7wha@7g4r8nh449vx_%#7k4a7m+z$'
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 # Se definen las aplicaciones necesarias
 INSTALLED_APPS = [
@@ -131,4 +131,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'diego.hgonzalez@alumnos.udg.mx'
-EMAIL_HOST_PASSWORD = config("PASSWORD")
+EMAIL_HOST_PASSWORD = 'D13g03s1av3rg4'
