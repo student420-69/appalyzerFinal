@@ -69,7 +69,7 @@ spacy-legacy==3.0.12
 spacy-loggers==1.0.4
 srsly==2.4.6
 tables==3.7.0
-TBB==0.2
+TBB==2021.9.0
 thinc==8.1.9
 torch==1.13.1
 typer==0.7.0
