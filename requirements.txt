@@ -12,7 +12,7 @@ cssselect==1.1.0
 cymem==2.0.7
 daal4py==2023.1.1
 datasets==2.11.0
-datashape==0.5.4
+datashape==0.5.2
 dj-database-url==2.0.0
 django-crispy-bootstrap==0.1.1.1
 django-crispy-forms==2.0
