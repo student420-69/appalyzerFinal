@@ -58,7 +58,7 @@ pysentimiento==0.6.7
 pytest==7.1.2
 python-decouple==3.8
 python-lsp-jsonrpc==1.0.0
-pywin32==295
+pywin32==225.1
 pywin32-ctypes==0.2.0
 PyYAML==6.0
 queuelib==1.5.0
