@@ -62,7 +62,7 @@ pywin32-ctypes==0.2.0
 PyYAML==6.0
 queuelib==1.5.0
 responses==0.18.0
-scikit-learn-intelex==20230228.214506
+scikit-learn-intelex==2023.1.1
 scipy==1.10.1
 spacy==3.5.2
 spacy-legacy==3.0.12
